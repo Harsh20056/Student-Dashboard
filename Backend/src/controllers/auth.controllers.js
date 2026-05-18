@@ -154,7 +154,7 @@ const forgetPasswordController = async (req, res) => {
       expiresIn: "10m",
     });
 
-    let resetLink = `http://localhost:3000/api/auth/reset-password/${rawToken}`;
+    let resetLink = `https://student-dashboard-ry9a.onrender.com/api/auth/reset-password/${rawToken}`;
 
     await sendMailTo(
       email,
@@ -236,7 +236,7 @@ let updatePasswordController = async (req, res) => {
         new: true,
       },
     );
-    return res.redirect("http://localhost:5173/login?message=Password updated successfully. Please login with your new password.");
+    return res.redirect("https://student-dashboard-ry9a.onrender.com/login?message=Password updated successfully. Please login with your new password.");
   } catch (error) {
     console.log("error in UP api", error);
     return res.status(500).json({

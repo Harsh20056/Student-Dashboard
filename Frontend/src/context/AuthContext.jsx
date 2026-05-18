@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Configure axios defaults
-  axios.defaults.baseURL = 'http://localhost:3000/api';
+  axios.defaults.baseURL = 'https://student-dashboard-ry9a.onrender.com/api';
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
