@@ -1,4 +1,8 @@
 {
+  "version": 2,
+  "buildCommand": "npm ci && npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm ci",
   "env": {
     "REACT_APP_API_URL": "https://student-dashboard-ry9a.onrender.com/api"
   }
