@@ -13,6 +13,7 @@ const Journal = () => {
 
   useEffect(() => {
     fetchJournals();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchJournals = async () => {
