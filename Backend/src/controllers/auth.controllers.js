@@ -39,7 +39,13 @@ const registerController = async (req, res) => {
         expiresIn: "1h",
       },
     );
-    res.cookie("token", token);
+    const isProd = process.env.NODE_ENV === "production";
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
+      maxAge: 60 * 60 * 1000,
+    });
 
     return res.status(201).json({
       success: true,
@@ -87,7 +93,13 @@ const loginController = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.cookie("token", token);
+    const isProd = process.env.NODE_ENV === "production";
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
+      maxAge: 60 * 60 * 1000,
+    });
 
     return res.status(200).json({
       success: true,
@@ -113,7 +125,12 @@ const logoutController = (req, res) => {
       });
     }
 
-    res.clearCookie("token");
+    const isProd = process.env.NODE_ENV === "production";
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
+    });
 
     return res.status(200).json({
       success: true,

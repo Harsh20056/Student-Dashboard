@@ -43,7 +43,7 @@ const getTotalStudyHoursController = async (req, res) => {
 
 const getRecentTopics = async (req, res) => {
   try {
-    const recentTopics = await JournalModel.find()
+    const recentTopics = await JournalModel.find({ user_id: req.user._id })
       .sort({ createdAt: -1 })
       .limit(5);
 
@@ -60,6 +60,7 @@ const getRecentTopics = async (req, res) => {
 const getProductivityOverview = async (req, res) => {
   try {
     const overview = await JournalModel.aggregate([
+      { $match: { user_id: req.user._id } },
       {
         $group: {
           _id: "$difficultyLevel",

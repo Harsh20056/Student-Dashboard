@@ -5,6 +5,7 @@
 .env.test.local
 .env.production.local
 Backend/.env
+Frontend/.env
 Frontend/.env.local
 Frontend/.env.development.local
 Frontend/.env.test.local
