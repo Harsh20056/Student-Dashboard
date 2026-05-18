@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -12,7 +12,8 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Configure axios defaults
-  axios.defaults.baseURL = 'https://student-dashboard-ry9a.onrender.com/api';
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+  axios.defaults.baseURL = apiUrl;
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
