@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext.jsx';
 
 const Profile = () => {
@@ -28,7 +28,7 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get(`/profile/${user._id}`);
+      const response = await api.get(`/profile/${user._id}`);
       if (response.data.success) {
         const userData = response.data.user;
         setProfileData({
@@ -64,7 +64,7 @@ const Profile = () => {
     setMessage('');
 
     try {
-      const response = await axios.put(`/profile/${user._id}`, {
+      const response = await api.put(`/profile/${user._id}`, {
         name: profileData.name,
         email: profileData.email
       });
@@ -92,7 +92,7 @@ const Profile = () => {
     }
 
     try {
-      const response = await axios.put(`/profile/${user._id}/change-password`, {
+      const response = await api.put(`/profile/${user._id}/change-password`, {
         oldPassword: passwordData.oldPassword,
         newPassword: passwordData.newPassword
       });

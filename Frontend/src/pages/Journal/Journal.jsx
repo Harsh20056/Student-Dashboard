@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 import JournalForm from '../../components/Journal/JournalForm.jsx';
 import JournalList from '../../components/Journal/JournalList.jsx';
 import SearchFilter from '../../components/Journal/SearchFilter.jsx';
@@ -17,7 +17,7 @@ const Journal = () => {
 
   const fetchJournals = async () => {
     try {
-      const response = await axios.get('/journal/allJournal');
+      const response = await api.get('/journal/allJournal');
       setJournals(response.data.journal || []);
       setFilteredJournals(response.data.journal || []);
     } catch (error) {
@@ -29,7 +29,7 @@ const Journal = () => {
 
   const handleCreateJournal = async (journalData) => {
     try {
-      const response = await axios.post('/journal/create-journal', journalData);
+      const response = await api.post('/journal/create-journal', journalData);
       if (response.data.success) {
         fetchJournals();
         setShowForm(false);
@@ -42,7 +42,7 @@ const Journal = () => {
 
   const handleUpdateJournal = async (journalId, journalData) => {
     try {
-      const response = await axios.put(`/journal/update-journal/${journalId}`, journalData);
+      const response = await api.put(`/journal/update-journal/${journalId}`, journalData);
       if (response.data.success) {
         fetchJournals();
         setEditingJournal(null);
@@ -57,7 +57,7 @@ const Journal = () => {
   const handleDeleteJournal = async (journalId) => {
     if (window.confirm('Are you sure you want to delete this journal entry?')) {
       try {
-        await axios.delete(`/journal/${journalId}`);
+        await api.delete(`/journal/${journalId}`);
         fetchJournals();
       } catch (error) {
         console.error('Error deleting journal:', error);
@@ -68,7 +68,7 @@ const Journal = () => {
   const handleSearch = async (searchParams) => {
     try {
       const queryString = new URLSearchParams(searchParams).toString();
-      const response = await axios.get(`/journal/search?${queryString}`);
+      const response = await api.get(`/journal/search?${queryString}`);
       setFilteredJournals(response.data.entries || []);
     } catch (error) {
       console.error('Error searching journals:', error);
