@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- Dashboard Layout Containers --- */
+.dashboard-wrapper {
+  width: 100%;
+  max-width: 450px;
+  background-color: #1e293b; /* Sleek Dark Slate Card Background */
+  border-radius: 16px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #334155;
+  overflow: hidden;
+}
+
+/* Accent Branding Header */
+.dashboard-header {
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  ); /* Vibrant Indigo Gradient Accent */
+  padding: 28px 24px;
+  color: #ffffff;
+}
+
+.dashboard-header h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+/* User Badge Styling */
+.user-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: #e0e7ff;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Functional Form System --- */
+form {
+  padding: 28px 24px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #94a3b8; /* Muted slate for input text instructions */
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+/* Input Fields Structure */
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #0f172a; /* Internal field contrast */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-appearance: none;
+}
+
+input[type="password"]::placeholder {
+  color: #475569;
+}
+
+input[type="password"]:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+  background-color: #0f172a;
+}
+
+/* --- Action Panel Navigation --- */
+.action-panel {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+}
+
+button[type="submit"]:hover {
+  background-color: #4338ca;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.99);
+}
+
+.link-fallback {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px;
+  background-color: transparent;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.link-fallback:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Responsive Interface Standard Adjustments */
+@media (min-width: 480px) {
+  .dashboard-wrapper {
+    border-radius: 20px;
+  }
+  .dashboard-header,
+  form {
+    padding: 36px 32px;
+  }
+}
